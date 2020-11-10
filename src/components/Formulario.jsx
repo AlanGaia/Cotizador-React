@@ -47,6 +47,7 @@ const Formulario = () => {
         <label htmlFor="planPremium">Premium</label>
       </div>
 
+      <button type="button">Cotizar</button>
 
     </form>
   )
