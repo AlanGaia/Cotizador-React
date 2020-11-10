@@ -1,4 +1,9 @@
 import React from 'react'
+import styled from '@emotion/styled'
+
+const ContenedorHeader = styled.header`
+  background-color: #26C6DA;
+`;
 
 const Header = ({titulo}) => {
   return (
