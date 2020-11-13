@@ -8,6 +8,9 @@ const Campo = styled.div`
   align-items: center;
 `;
 
+const Label = styled.label`
+  flex: 0 0 100px;
+`;
 
 const Formulario = () => {
   return (
@@ -15,7 +18,7 @@ const Formulario = () => {
 
       {/* Marca del Auto  */}
       <Campo>
-        <label htmlFor="marca">Marca</label>
+        <Label htmlFor="marca">Marca</Label>
         <select name="marca">
           <option value="" selected disabled hidden>Seleccione una marca</option>
           <option value="americano">Americano</option>
@@ -25,8 +28,8 @@ const Formulario = () => {
       </Campo>
 
       {/* Año del Auto */}
-      <div>
-        <label htmlFor="anio">Año</label>
+      <Campo>
+        <Label htmlFor="anio">Año</Label>
         <select name="anio">
           <option value="" selected disabled hidden>Seleccione una año</option>
           <option value="2021">2021</option>
@@ -40,21 +43,21 @@ const Formulario = () => {
           <option value="2013">2013</option>
           <option value="2012">2012</option>
         </select>
-      </div>
+      </Campo>
 
       {/* Plan del Auto */}
-      <div>
-        <label htmlFor="plan">Plan</label>
+      <Campo>
+        <Label htmlFor="plan">Plan</Label>
         {/* Básico */}
         <input type="radio" name="plan" value="basico" id="planBasico"/>
-        <label htmlFor="planBasico">Básico</label>
+        <Label htmlFor="planBasico">Básico</Label>
         {/* Intermedio */}
         <input type="radio" name="plan" value="intermedio" id="planIntermedio"/>
-        <label htmlFor="planIntermedio">Intermedio</label>
+        <Label htmlFor="planIntermedio">Intermedio</Label>
         {/* Premium */}
         <input type="radio" name="plan" value="premium" id="planPremium"/>
-        <label htmlFor="planPremium">Premium</label>
-      </div>
+        <Label htmlFor="planPremium">Premium</Label>
+      </Campo>
 
       <button type="button">Cotizar</button>
 
