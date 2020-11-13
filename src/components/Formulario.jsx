@@ -12,6 +12,15 @@ const Label = styled.label`
   flex: 0 0 100px;
 `;
 
+const Select = styled.select`
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #e1e1e1;
+  cursor: pointer;
+  -webkit-appearance: none;
+`;
+
 const Formulario = () => {
   return (
     <form>
@@ -19,18 +28,18 @@ const Formulario = () => {
       {/* Marca del Auto  */}
       <Campo>
         <Label htmlFor="marca">Marca</Label>
-        <select name="marca">
+        <Select name="marca">
           <option value="" selected disabled hidden>Seleccione una marca</option>
           <option value="americano">Americano</option>
           <option value="europeo">Europeo</option>
           <option value="asiatico">Asiatico</option>
-        </select>
+        </Select>
       </Campo>
 
       {/* Año del Auto */}
       <Campo>
         <Label htmlFor="anio">Año</Label>
-        <select name="anio">
+        <Select name="anio">
           <option value="" selected disabled hidden>Seleccione una año</option>
           <option value="2021">2021</option>
           <option value="2020">2020</option>
@@ -42,7 +51,7 @@ const Formulario = () => {
           <option value="2014">2014</option>
           <option value="2013">2013</option>
           <option value="2012">2012</option>
-        </select>
+        </Select>
       </Campo>
 
       {/* Plan del Auto */}
