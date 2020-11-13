@@ -21,6 +21,10 @@ const Select = styled.select`
   -webkit-appearance: none;
 `;
 
+const InputRadio = styled.input`
+  margin: 0 1rem;
+`;
+
 const Formulario = () => {
   return (
     <form>
@@ -58,13 +62,13 @@ const Formulario = () => {
       <Campo>
         <Label htmlFor="plan">Plan</Label>
         {/* Básico */}
-        <input type="radio" name="plan" value="basico" id="planBasico"/>
+        <InputRadio type="radio" name="plan" value="basico" id="planBasico"/>
         <Label htmlFor="planBasico">Básico</Label>
         {/* Intermedio */}
-        <input type="radio" name="plan" value="intermedio" id="planIntermedio"/>
+        <InputRadio type="radio" name="plan" value="intermedio" id="planIntermedio"/>
         <Label htmlFor="planIntermedio">Intermedio</Label>
         {/* Premium */}
-        <input type="radio" name="plan" value="premium" id="planPremium"/>
+        <InputRadio type="radio" name="plan" value="premium" id="planPremium"/>
         <Label htmlFor="planPremium">Premium</Label>
       </Campo>
 
