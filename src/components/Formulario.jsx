@@ -72,7 +72,7 @@ const Formulario = () => {
         <Label htmlFor="planPremium">Premium</Label>
       </Campo>
 
-      <button type="button">Cotizar</button>
+      <button type="submit">Cotizar</button>
 
     </form>
   )
