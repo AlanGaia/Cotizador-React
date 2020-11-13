@@ -1,11 +1,20 @@
 import React from 'react'
 
+import styled from '@emotion/styled';
+
+const Campo = styled.div`
+  display: flex;
+  margin-bottom: 1rem;
+  align-items: center;
+`;
+
+
 const Formulario = () => {
   return (
     <form>
 
       {/* Marca del Auto  */}
-      <div>
+      <Campo>
         <label htmlFor="marca">Marca</label>
         <select name="marca">
           <option value="" selected disabled hidden>Seleccione una marca</option>
@@ -13,7 +22,7 @@ const Formulario = () => {
           <option value="europeo">Europeo</option>
           <option value="asiatico">Asiatico</option>
         </select>
-      </div>
+      </Campo>
 
       {/* Año del Auto */}
       <div>
