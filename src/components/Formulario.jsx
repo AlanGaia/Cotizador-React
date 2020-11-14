@@ -34,13 +34,14 @@ const Boton = styled.button`
   text-transform: uppercase;
   font-weight: bold;
   border: none;
-  transition: 0.5s;
+  transition: 0.5s ease;
+  margin-top: 2rem;
 
   //:hover
   &:hover {
     cursor: pointer;
     background-color: #0b79d3;
-    
+
   }
 `;
 
