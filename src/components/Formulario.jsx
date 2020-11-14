@@ -25,6 +25,25 @@ const InputRadio = styled.input`
   margin: 0 1rem;
 `;
 
+const Boton = styled.button`
+  background-color: #00838F;
+  font-size: 16px;
+  width: 100%;
+  padding: 1rem;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: none;
+  transition: 0.5s;
+
+  //:hover
+  &:hover {
+    cursor: pointer;
+    background-color: #0b79d3;
+    
+  }
+`;
+
 const Formulario = () => {
   return (
     <form>
@@ -72,7 +91,7 @@ const Formulario = () => {
         <Label htmlFor="planPremium">Premium</Label>
       </Campo>
 
-      <button type="submit">Cotizar</button>
+      <Boton type="submit">Cotizar</Boton>
 
     </form>
   )
