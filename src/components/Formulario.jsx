@@ -45,6 +45,15 @@ const Boton = styled.button`
   }
 `;
 
+const Error = styled.div`
+  background-color: #f76e6e;
+  color: #ff0000;
+  border: 2px solid #fa2f2f;
+  padding: 1rem;
+  width: 100%;
+  text-align: center;
+`;
+
 const Formulario = () => {
 
   //Data
@@ -77,12 +86,16 @@ const Formulario = () => {
       console.log('error');
       return;
     }
+    setError(false)
     console.log('enviando');
   }
 
   
   return (
     <form onSubmit={cotizarSeguro}>
+
+      {/* Error case */}
+      { error ? <Error>Todos los campos son requeridos</Error> : null }
 
       {/* Marca del Auto  */}
       <Campo>
