@@ -52,6 +52,7 @@ const Error = styled.div`
   padding: 1rem;
   width: 100%;
   text-align: center;
+  margin-bottom: 1rem;
 `;
 
 const Formulario = () => {
