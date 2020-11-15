@@ -82,7 +82,7 @@ const Formulario = () => {
       {/* Año del Auto */}
       <Campo>
         <Label htmlFor="anio">Año</Label>
-        <Select name="anio" value={anio}>
+        <Select name="anio" value={anio} onChange={obtenerDatos}>
           <option value="" selected disabled hidden>Seleccione una año</option>
           <option value="2021">2021</option>
           <option value="2020">2020</option>
@@ -101,13 +101,34 @@ const Formulario = () => {
       <Campo>
         <Label htmlFor="plan">Plan</Label>
         {/* Básico */}
-        <InputRadio type="radio" name="plan" value="basico" id="planBasico" checked={plan === 'basico'}/>
+        <InputRadio 
+          type="radio" 
+          name="plan" 
+          value="basico" 
+          id="planBasico" 
+          checked={plan === 'basico'} 
+          onChange={obtenerDatos}
+        />
         <Label htmlFor="planBasico">Básico</Label>
         {/* Intermedio */}
-        <InputRadio type="radio" name="plan" value="intermedio" id="planIntermedio" checked={plan === 'intermedio'}/>
+        <InputRadio 
+          type="radio" 
+          name="plan" 
+          value="intermedio" 
+          id="planIntermedio" 
+          checked={plan === 'intermedio'}
+          onChange={obtenerDatos}
+        />
         <Label htmlFor="planIntermedio">Intermedio</Label>
         {/* Premium */}
-        <InputRadio type="radio" name="plan" value="premium" id="planPremium" checked={plan === 'premium'}/>
+        <InputRadio 
+          type="radio" 
+          name="plan" 
+          value="premium" 
+          id="planPremium" 
+          checked={plan === 'premium'}
+          onChange={obtenerDatos}
+        />
         <Label htmlFor="planPremium">Premium</Label>
       </Campo>
 
