@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 import styled from '@emotion/styled';
 
@@ -46,13 +46,32 @@ const Boton = styled.button`
 `;
 
 const Formulario = () => {
+
+  const [datos, setDatos] = useState({
+    marca: '',
+    anio: '',
+    plan: ''
+  })
+
+  //Destructuring obj datos
+  const {marca, anio, plan} = datos;
+
+  //handle change
+  const obtenerDatos = e => {
+    setDatos({
+      ...datos,
+      [e.target.name] : e.target.value
+    })
+  }
+
+  
   return (
     <form>
 
       {/* Marca del Auto  */}
       <Campo>
         <Label htmlFor="marca">Marca</Label>
-        <Select name="marca">
+        <Select name="marca" value={marca} onChange={obtenerDatos}>
           <option value="" selected disabled hidden>Seleccione una marca</option>
           <option value="americano">Americano</option>
           <option value="europeo">Europeo</option>
@@ -63,7 +82,7 @@ const Formulario = () => {
       {/* Año del Auto */}
       <Campo>
         <Label htmlFor="anio">Año</Label>
-        <Select name="anio">
+        <Select name="anio" value={anio}>
           <option value="" selected disabled hidden>Seleccione una año</option>
           <option value="2021">2021</option>
           <option value="2020">2020</option>
@@ -82,13 +101,13 @@ const Formulario = () => {
       <Campo>
         <Label htmlFor="plan">Plan</Label>
         {/* Básico */}
-        <InputRadio type="radio" name="plan" value="basico" id="planBasico"/>
+        <InputRadio type="radio" name="plan" value="basico" id="planBasico" checked={plan === 'basico'}/>
         <Label htmlFor="planBasico">Básico</Label>
         {/* Intermedio */}
-        <InputRadio type="radio" name="plan" value="intermedio" id="planIntermedio"/>
+        <InputRadio type="radio" name="plan" value="intermedio" id="planIntermedio" checked={plan === 'intermedio'}/>
         <Label htmlFor="planIntermedio">Intermedio</Label>
         {/* Premium */}
-        <InputRadio type="radio" name="plan" value="premium" id="planPremium"/>
+        <InputRadio type="radio" name="plan" value="premium" id="planPremium" checked={plan === 'premium'}/>
         <Label htmlFor="planPremium">Premium</Label>
       </Campo>
 
