@@ -47,11 +47,15 @@ const Boton = styled.button`
 
 const Formulario = () => {
 
+  //Data
   const [datos, setDatos] = useState({
     marca: '',
     anio: '',
     plan: ''
   })
+
+  //Error
+  const [error, setError] = useState(false)
 
   //Destructuring obj datos
   const {marca, anio, plan} = datos;
@@ -64,15 +68,27 @@ const Formulario = () => {
     })
   }
 
+  //Handle error and Submit
+  const cotizarSeguro = e => {
+    e.preventDefault();
+
+    if(marca.trim() === '' || anio.trim() === '' || plan.trim() === ''){
+      setError(true);
+      console.log('error');
+      return;
+    }
+    console.log('enviando');
+  }
+
   
   return (
-    <form>
+    <form onSubmit={cotizarSeguro}>
 
       {/* Marca del Auto  */}
       <Campo>
         <Label htmlFor="marca">Marca</Label>
         <Select name="marca" value={marca} onChange={obtenerDatos}>
-          <option value="" selected disabled hidden>Seleccione una marca</option>
+          <option value=""  disabled hidden>Seleccione una marca</option>
           <option value="americano">Americano</option>
           <option value="europeo">Europeo</option>
           <option value="asiatico">Asiatico</option>
@@ -83,8 +99,7 @@ const Formulario = () => {
       <Campo>
         <Label htmlFor="anio">Año</Label>
         <Select name="anio" value={anio} onChange={obtenerDatos}>
-          <option value="" selected disabled hidden>Seleccione una año</option>
-          <option value="2021">2021</option>
+          <option value=""  disabled hidden>Seleccione una año</option>
           <option value="2020">2020</option>
           <option value="2019">2019</option>
           <option value="2018">2018</option>
