@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 
 import styled from '@emotion/styled';
 
+import { obtenerDiferenciaAnio} from '../helper';
+
 const Campo = styled.div`
   display: flex;
   margin-bottom: 1rem;
@@ -88,7 +90,24 @@ const Formulario = () => {
       return;
     }
     setError(false)
-    console.log('enviando');
+
+    //Base de 2000
+    let resultado = 2000;
+
+    //obtener la dif de anio seleccionado contra el actual
+    const diferenciaAnio = obtenerDiferenciaAnio(anio);
+    console.log(diferenciaAnio);
+
+  
+    // por cada año de diferencia restar 3%
+    const porcentaje = 3 * diferenciaAnio;
+    
+    resultado = resultado - (resultado * porcentaje / 100);
+
+    console.log(resultado);
+
+
+
   }
 
   
