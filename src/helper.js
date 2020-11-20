@@ -18,6 +18,26 @@ export function calcularMarca(marca) {
     default:
       break;
   }
-  
+
   return aumento;
+}
+
+export function calcularPlan(plan) {
+  let resultado;
+
+  switch (plan) {
+    case 'basico':
+      resultado = 1.20;
+      break;
+    case 'intermedio':
+      resultado = 1.35;
+      break;
+    case 'premium':
+      resultado = 1.50;
+      break;
+    default:
+      break;
+  }
+
+  return resultado;
 }

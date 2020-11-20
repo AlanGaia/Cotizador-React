@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 
 import styled from '@emotion/styled';
 
-import { obtenerDiferenciaAnio, calcularMarca} from '../helper';
+import { obtenerDiferenciaAnio, calcularMarca, calcularPlan} from '../helper';
 
 const Campo = styled.div`
   display: flex;
@@ -104,9 +104,12 @@ const Formulario = () => {
     //Calcular aumento segun marca
     resultado = calcularMarca(marca) * resultado;
 
+    //Calcular aumento segun plan
+    resultado = calcularPlan(plan) * resultado
+    resultado = parseFloat(resultado).toFixed(2);
+
+    //resultado final por consola
     console.log(resultado);
-
-
 
   }
 
