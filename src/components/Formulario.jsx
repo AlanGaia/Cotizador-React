@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 
 import styled from '@emotion/styled';
 
-import { obtenerDiferenciaAnio} from '../helper';
+import { obtenerDiferenciaAnio, calcularMarca} from '../helper';
 
 const Campo = styled.div`
   display: flex;
@@ -96,13 +96,13 @@ const Formulario = () => {
 
     //obtener la dif de anio seleccionado contra el actual
     const diferenciaAnio = obtenerDiferenciaAnio(anio);
-    console.log(diferenciaAnio);
-
   
     // por cada año de diferencia restar 3%
     const porcentaje = 3 * diferenciaAnio;
-    
     resultado = resultado - (resultado * porcentaje / 100);
+
+    //Calcular aumento segun marca
+    resultado = calcularMarca(marca) * resultado;
 
     console.log(resultado);
 
