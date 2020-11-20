@@ -57,7 +57,7 @@ const Error = styled.div`
   margin-bottom: 1rem;
 `;
 
-const Formulario = () => {
+const Formulario = ({setResumen}) => {
 
   //Data
   const [datos, setDatos] = useState({
@@ -110,6 +110,12 @@ const Formulario = () => {
 
     //resultado final por consola
     console.log(resultado);
+
+    //Guardar resultado
+    setResumen({
+      cotizacion: resultado,
+      datos,
+    })
 
   }
 

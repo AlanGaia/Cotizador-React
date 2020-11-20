@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 import Formulario from './components/Formulario'
 import Header from "./components/Header";
@@ -16,11 +16,15 @@ const ContenedorFormulario = styled.div`
 `;
 
 function App() {
+
+  const [resumen, setResumen] = useState({})
+
+
   return (
     <Contenedor>
       <Header titulo="Cotizador de Seguros" />
       <ContenedorFormulario>
-        <Formulario />
+        <Formulario setResumen={setResumen} />
       </ContenedorFormulario>
     </Contenedor>
   );
