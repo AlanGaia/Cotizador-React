@@ -4,6 +4,7 @@ import Formulario from './components/Formulario'
 import Header from "./components/Header";
 
 import styled from "@emotion/styled";
+import Resumen from "./components/Resumen";
 
 const Contenedor = styled.div`
   max-width: 600px;
@@ -25,6 +26,7 @@ function App() {
       <Header titulo="Cotizador de Seguros" />
       <ContenedorFormulario>
         <Formulario setResumen={setResumen} />
+        <Resumen  />
       </ContenedorFormulario>
     </Contenedor>
   );
