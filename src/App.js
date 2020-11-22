@@ -20,13 +20,21 @@ function App() {
 
   const [resumen, setResumen] = useState({})
 
+  const { datos } = resumen;
+
 
   return (
     <Contenedor>
       <Header titulo="Cotizador de Seguros" />
       <ContenedorFormulario>
         <Formulario setResumen={setResumen} />
-        <Resumen  />
+
+        {datos ?
+          <Resumen datos={datos} />
+          :
+          null
+        }
+
       </ContenedorFormulario>
     </Contenedor>
   );
