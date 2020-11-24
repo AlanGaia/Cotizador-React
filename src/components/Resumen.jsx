@@ -1,17 +1,19 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 function Resumen({datos}) {
 
   const  {marca, anio, plan} = datos;
   
   return (
-    <>
-    <h2>Resumen de cotización</h2>
-    <ul>
-      <li>Marca: {marca}</li>
-    </ul>
-    </>
-  )
+    <Fragment>
+      <h2>Resumen de cotización</h2>
+      <ul>
+        <li>Marca: {marca}</li>
+        <li>Año: {anio}</li>
+        <li>Plan: {plan}</li>
+      </ul>
+    </Fragment>
+  );
 }
 
-export default Resumen
+export default Resumen;
