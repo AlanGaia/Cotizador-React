@@ -1,8 +1,11 @@
 import React from 'react'
 
-function Resultado() {
+function Resultado({ cotizacion }) {
+
+  if (cotizacion === 0) return null;
+
   return (
-    <h1>Resultado</h1>
+    <h1>Resultado {cotizacion}</h1>
   )
 }
 
