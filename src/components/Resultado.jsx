@@ -10,11 +10,19 @@ const Mensaje = styled.p`
 `;
 
 const Total = styled.p`
-  background-color: rgb(29, 248, 95);
-  margin-top: 2rem;
-  padding: 1rem;
   text-align: center;
   font-weight: bold;
+  text-transform: uppercase;
+  color: #086917;
+`;
+
+const ContenedorTotal = styled.div`
+  text-align: center;
+  padding: .5rem;
+  border: solid 2px rgb(29, 248, 95);
+  background-color: #cbffd3;
+  margin-top: 1rem;
+  position: relative;
 `;
 
 
@@ -24,8 +32,12 @@ function Resultado({ cotizacion }) {
   return (
     (cotizacion === 0) ? 
       <Mensaje>Elige marca, año y plan</Mensaje> 
-      : 
-      <Total>El total es: ${cotizacion}</Total>
+      :
+        (
+          <ContenedorTotal>
+            <Total>El total es: ${cotizacion}</Total>
+          </ContenedorTotal>
+        )
   )
 }
 
