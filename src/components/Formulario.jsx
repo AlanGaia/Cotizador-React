@@ -48,9 +48,9 @@ const Boton = styled.button`
 `;
 
 const Error = styled.div`
-  background-color: #f76e6e;
-  color: #ff0000;
-  border: 2px solid #fa2f2f;
+  background-color: #e21111;
+  color: #ffffff;
+  font-weight: bold;
   padding: 1rem;
   width: 100%;
   text-align: center;
@@ -86,7 +86,6 @@ const Formulario = ({setResumen}) => {
 
     if(marca.trim() === '' || anio.trim() === '' || plan.trim() === ''){
       setError(true);
-      console.log('error');
       return;
     }
     setError(false)
@@ -124,7 +123,9 @@ const Formulario = ({setResumen}) => {
     <form onSubmit={cotizarSeguro}>
 
       {/* Error case */}
+      <Campo>
       { error ? <Error>Todos los campos son requeridos</Error> : null }
+      </Campo>
 
       {/* Marca del Auto  */}
       <Campo>
