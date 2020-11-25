@@ -13,6 +13,11 @@ const Campo = styled.div`
 const Label = styled.label`
   flex: 0 0 100px;
 `;
+const Borde = styled.div`
+  border: solid 1px black;
+  padding: 1rem;
+  background-color: aliceblue;
+`;
 
 const Select = styled.select`
   display: block;
@@ -159,6 +164,7 @@ const Formulario = ({setResumen}) => {
       <Campo>
         <Label htmlFor="plan">Plan:</Label>
       </Campo>
+      <Borde>
       <Campo>
         <Label htmlFor="planBasico">Básico</Label>
           {/* Básico */}
@@ -195,6 +201,7 @@ const Formulario = ({setResumen}) => {
             onChange={obtenerDatos}
           />
       </Campo>
+      </Borde>
 
       <Boton type="submit">Cotizar</Boton>
 

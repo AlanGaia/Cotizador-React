@@ -23,7 +23,7 @@ function Resultado({ cotizacion }) {
 
   return (
     (cotizacion === 0) ? 
-      <Mensaje>Elige marca, año y tipo de seguro</Mensaje> 
+      <Mensaje>Elige marca, año y plan</Mensaje> 
       : 
       <Total>El total es: ${cotizacion}</Total>
   )
