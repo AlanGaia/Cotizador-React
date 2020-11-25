@@ -157,37 +157,43 @@ const Formulario = ({setResumen}) => {
 
       {/* Plan del Auto */}
       <Campo>
-        <Label htmlFor="plan">Plan</Label>
-        {/* Básico */}
-        <InputRadio 
-          type="radio" 
-          name="plan" 
-          value="basico" 
-          id="planBasico" 
-          checked={plan === 'basico'} 
-          onChange={obtenerDatos}
-        />
+        <Label htmlFor="plan">Plan:</Label>
+      </Campo>
+      <Campo>
         <Label htmlFor="planBasico">Básico</Label>
-        {/* Intermedio */}
-        <InputRadio 
-          type="radio" 
-          name="plan" 
-          value="intermedio" 
-          id="planIntermedio" 
-          checked={plan === 'intermedio'}
-          onChange={obtenerDatos}
-        />
+          {/* Básico */}
+          <InputRadio 
+            type="radio" 
+            name="plan" 
+            value="basico" 
+            id="planBasico" 
+            checked={plan === 'basico'} 
+            onChange={obtenerDatos}
+          />
+      </Campo>
+      <Campo>
         <Label htmlFor="planIntermedio">Intermedio</Label>
-        {/* Premium */}
-        <InputRadio 
-          type="radio" 
-          name="plan" 
-          value="premium" 
-          id="planPremium" 
-          checked={plan === 'premium'}
-          onChange={obtenerDatos}
-        />
+          {/* Intermedio */}
+          <InputRadio 
+            type="radio" 
+            name="plan" 
+            value="intermedio" 
+            id="planIntermedio" 
+            checked={plan === 'intermedio'}
+            onChange={obtenerDatos}
+          />
+      </Campo>
+      <Campo>
         <Label htmlFor="planPremium">Premium</Label>
+          {/* Premium */}
+          <InputRadio 
+            type="radio" 
+            name="plan" 
+            value="premium" 
+            id="planPremium" 
+            checked={plan === 'premium'}
+            onChange={obtenerDatos}
+          />
       </Campo>
 
       <Boton type="submit">Cotizar</Boton>

@@ -16,6 +16,7 @@ const ContenedorResumen = styled.div`
 
 const LogoMarca = styled.img`
   width: 200px;
+  max-height: 200px;
 `;
 
 function Resumen({datos}) {
@@ -30,8 +31,12 @@ function Resumen({datos}) {
   switch (marca) {
     case 'americano': src = FordLogo; 
       break;
+    case 'asiatico': src = MitsubishiLogo; 
+      break;
+    case 'europeo': src = PeugeotLogo; 
+      break;
     
-    default: null
+    default: src =  null
       break;
     }
   
