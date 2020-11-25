@@ -2,10 +2,9 @@ import React from 'react'
 
 function Resultado({ cotizacion }) {
 
-  if (cotizacion === 0) return null;
 
   return (
-    <h1>Resultado {cotizacion}</h1>
+    (cotizacion === 0) ? <p>Elige marca, año y tipo de seguro</p> : cotizacion
   )
 }
 
