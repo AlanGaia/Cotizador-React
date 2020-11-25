@@ -14,7 +14,10 @@ const ContenedorResumen = styled.div`
 
 function Resumen({datos}) {
 
+  //extraer datos
   const  {marca, anio, plan} = datos;
+
+  if (marca === '' || anio === '' || plan === '') return null;
   
   return (
     <ContenedorResumen>

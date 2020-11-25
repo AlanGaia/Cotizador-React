@@ -19,7 +19,14 @@ const ContenedorFormulario = styled.div`
 
 function App() {
 
-  const [resumen, setResumen] = useState({})
+  const [resumen, setResumen] = useState({
+    cotizacion: 0,
+    datos: {
+      marca: '',
+      anio: '',
+      plan: '',
+    }
+  })
 
   const { datos } = resumen;
 
@@ -30,11 +37,7 @@ function App() {
       <ContenedorFormulario>
         <Formulario setResumen={setResumen} />
 
-        {datos ?
-          <Resumen datos={datos} />
-          :
-          null
-        }
+        <Resumen datos={datos} />
 
         <Resultado />
 
