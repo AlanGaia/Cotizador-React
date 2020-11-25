@@ -1,4 +1,15 @@
 import React, { Fragment } from 'react'
+import styled from '@emotion/styled';
+
+
+const ContenedorResumen = styled.div`
+  padding: 1rem;
+  text-align: center;
+  background-color: #00838f;
+  color: #ffffff;
+  margin-top: 1rem;
+`;
+
 
 function Resumen({datos}) {
 
