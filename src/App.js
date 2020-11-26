@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import styled from "@emotion/styled";
 import Resumen from "./components/Resumen";
 import Resultado from './components/Resultado'
+import Spinner from "./components/Spinner/Spinner";
 
 const Contenedor = styled.div`
   max-width: 600px;
@@ -38,6 +39,8 @@ function App() {
         <Formulario setResumen={setResumen} />
 
         <Resumen datos={datos} />
+
+        <Spinner />
 
         <Resultado cotizacion={cotizacion} />
 
