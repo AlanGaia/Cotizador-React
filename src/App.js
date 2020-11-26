@@ -20,6 +20,9 @@ const ContenedorFormulario = styled.div`
 
 function App() {
 
+  const [cargando, setCargando] = useState(false);
+
+
   const [resumen, setResumen] = useState({
     cotizacion: 0,
     datos: {
@@ -36,13 +39,20 @@ function App() {
     <Contenedor>
       <Header titulo="Cotizador de Seguros" />
       <ContenedorFormulario>
-        <Formulario setResumen={setResumen} />
+
+        <Formulario 
+          setResumen={setResumen}
+          setCargando={setCargando} 
+        />
+
+        <Spinner cargando={cargando} />
 
         <Resumen datos={datos} />
 
-        <Spinner />
-
-        <Resultado cotizacion={cotizacion} />
+        { !cargando ?
+            <Resultado cotizacion={cotizacion} /> :
+            null
+        }
 
       </ContenedorFormulario>
     </Contenedor>

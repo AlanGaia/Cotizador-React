@@ -7,14 +7,20 @@ import { LogosOBJ } from '../Logos'
 const ContenedorResumen = styled.div`
   padding: 1rem;
   text-align: center;
-  background-color: #008f48;
-  color: #ffffff;
+  background-color: #a3c0fd;
+  color: #000000;
   margin-top: 1rem;
 `;
 
 const LogoMarca = styled.img`
   width: 200px;
   max-height: 200px;
+`;
+
+const ContainerUl = styled.ul`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
 `;
 
 function Resumen({datos}) {
@@ -35,11 +41,11 @@ function Resumen({datos}) {
       <h2>Resumen de cotización</h2>
       <LogoMarca src={src}/>
 
-      <ul>
-        <li>Marca: { primerLetraMayuscula(marca) }</li>
-        <li>Año: {anio}</li>
-        <li>Plan: { primerLetraMayuscula(plan) }</li>
-      </ul>
+      <ContainerUl>
+        <li>Marca: <b>{ primerLetraMayuscula(marca) }</b></li>
+        <li>Año: <b>{anio}</b></li>
+        <li>Plan: <b>{ primerLetraMayuscula(plan) }</b></li>
+      </ContainerUl>
     </ContenedorResumen>
   );
 }

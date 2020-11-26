@@ -62,7 +62,7 @@ const Error = styled.div`
   margin-bottom: 1rem;
 `;
 
-const Formulario = ({setResumen}) => {
+const Formulario = ({setResumen, setCargando}) => {
 
   //Data
   const [datos, setDatos] = useState({
@@ -112,14 +112,23 @@ const Formulario = ({setResumen}) => {
     resultado = calcularPlan(plan) * resultado
     resultado = parseFloat(resultado).toFixed(2);
 
-    //resultado final por consola
-    console.log(resultado);
+    //simular consumo de api con spinner
+    setCargando(true);
 
-    //Guardar resultado
-    setResumen({
-      cotizacion: resultado,
-      datos,
-    })
+    setTimeout(() => {
+
+      //Elimina el spinner despues de 1.5 segundos
+      setCargando(false);
+
+
+      //Guardar resultado
+      setResumen({
+        cotizacion: resultado,
+        datos,
+      });
+
+    }, 1500);
+
 
   }
 
