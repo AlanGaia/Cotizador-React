@@ -4,7 +4,6 @@ import { primerLetraMayuscula } from '../helper';
 import { LogosOBJ } from '../Logos'
 
 
-
 const ContenedorResumen = styled.div`
   padding: 1rem;
   text-align: center;
@@ -23,6 +22,9 @@ function Resumen({datos}) {
   //extraer datos
   const  {marca, anio, plan} = datos;
   if (marca === '' || anio === '' || plan === '') return null;
+
+
+
   // elegir logo segun marca 
   const src = LogosOBJ[marca] ?? null;
 
