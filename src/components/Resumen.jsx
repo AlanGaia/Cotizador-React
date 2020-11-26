@@ -1,9 +1,8 @@
 import React from 'react'
 import styled from '@emotion/styled';
 import { primerLetraMayuscula } from '../helper';
-import FordLogo from '../images/ford.png';
-import MitsubishiLogo from '../images/mitsubishi.png';
-import PeugeotLogo from '../images/peugeot.png';
+import { LogosOBJ } from '../Logos'
+
 
 
 const ContenedorResumen = styled.div`
@@ -23,31 +22,10 @@ function Resumen({datos}) {
 
   //extraer datos
   const  {marca, anio, plan} = datos;
-
   if (marca === '' || anio === '' || plan === '') return null;
+  // elegir logo segun marca 
+  const src = LogosOBJ[marca] ?? null;
 
-  // elegir logo segun marca
-
-  const marcaToSrc = {
-    americano: FordLogo,
-    asiatico: MitsubishiLogo,
-    europeo: PeugeotLogo,
-  };
-  
-  const src = marcaToSrc[marca] ?? null;
-
-  // let src;
-  // switch (marca) {
-  //   case 'americano': src = FordLogo; 
-  //     break;
-  //   case 'asiatico': src = MitsubishiLogo; 
-  //     break;
-  //   case 'europeo': src = PeugeotLogo; 
-  //     break;
-    
-  //   default: src =  null
-  //     break;
-  //   }
   
   
   return (
