@@ -27,18 +27,27 @@ function Resumen({datos}) {
   if (marca === '' || anio === '' || plan === '') return null;
 
   // elegir logo segun marca
-  let src;
-  switch (marca) {
-    case 'americano': src = FordLogo; 
-      break;
-    case 'asiatico': src = MitsubishiLogo; 
-      break;
-    case 'europeo': src = PeugeotLogo; 
-      break;
+
+  const marcaToSrc = {
+    americano: FordLogo,
+    asiatico: MitsubishiLogo,
+    europeo: PeugeotLogo,
+  };
+  
+  const src = marcaToSrc[marca] ?? null;
+
+  // let src;
+  // switch (marca) {
+  //   case 'americano': src = FordLogo; 
+  //     break;
+  //   case 'asiatico': src = MitsubishiLogo; 
+  //     break;
+  //   case 'europeo': src = PeugeotLogo; 
+  //     break;
     
-    default: src =  null
-      break;
-    }
+  //   default: src =  null
+  //     break;
+  //   }
   
   
   return (
