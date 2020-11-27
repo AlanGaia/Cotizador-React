@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
 
 import styled from '@emotion/styled';
-
-import { obtenerDiferenciaAnio, calcularAumentoPorContinenteDeOrigen, calcularPlan} from '../helper';
+//helpers y marcas
+import { obtenerDiferenciaAnio, calcularAumentoPorContinenteDeOrigen, calcularPlan, primerLetraMayuscula} from '../helper';
+import { Marcas } from '../Marcas';
 
 const Campo = styled.div`
   display: flex;
@@ -82,8 +83,14 @@ const Formulario = ({setResumen, setCargando}) => {
   const obtenerDatos = e => {
 
     if (e.target.name === 'continenteDeOrigen'){
-      //traer Marcas segun continente 
-      console.log('muchas marcas');
+      //get contintente continente 
+      const continente = e.target.value;
+      //Segun continente traer marcas asociadas
+      const arrayMarcas = Marcas[continente];
+      //Insertar un option por cada marca en el input Marca
+      arrayMarcas.forEach(marca => {
+        console.log(`<option value="${marca}">${primerLetraMayuscula(marca)}</option>`);
+      })
     }
 
 
