@@ -2,10 +2,10 @@ export function obtenerDiferenciaAnio(anio) {
    return new Date().getFullYear()- anio;
 }
 
-export function calcularMarca(marca) {
+export function calcularAumentoPorContinenteDeOrigen(continenteDeOrigen) {
   let aumento;
 
-  switch (marca) {
+  switch (continenteDeOrigen) {
     case 'europeo':
       aumento = 1.30;
       break;

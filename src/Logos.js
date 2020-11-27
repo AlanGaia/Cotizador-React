@@ -4,7 +4,7 @@ import PeugeotLogo from './images/peugeot.png'
 
 
 export let LogosOBJ = {
-  americano: FordLogo,
-  asiatico: MitsubishiLogo,
-  europeo: PeugeotLogo,
+  ford: FordLogo,
+  mitsubishi: MitsubishiLogo,
+  peugeot: PeugeotLogo,
 }

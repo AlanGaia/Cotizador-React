@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 
 import styled from '@emotion/styled';
 
-import { obtenerDiferenciaAnio, calcularMarca, calcularPlan} from '../helper';
+import { obtenerDiferenciaAnio, calcularAumentoPorContinenteDeOrigen, calcularPlan} from '../helper';
 
 const Campo = styled.div`
   display: flex;
@@ -66,6 +66,7 @@ const Formulario = ({setResumen, setCargando}) => {
 
   //Data
   const [datos, setDatos] = useState({
+    continenteDeOrigen: '',
     marca: '',
     anio: '',
     plan: ''
@@ -75,15 +76,24 @@ const Formulario = ({setResumen, setCargando}) => {
   const [error, setError] = useState(false)
 
   //Destructuring obj datos
-  const {marca, anio, plan} = datos;
+  const {continenteDeOrigen, marca, anio, plan} = datos;
 
   //handle change
   const obtenerDatos = e => {
+
+    if (e.target.name === 'continenteDeOrigen'){
+      //traer Marcas segun continente 
+      console.log('muchas marcas');
+    }
+
+
+
     setDatos({
       ...datos,
       [e.target.name] : e.target.value
     })
   }
+
 
   //Handle error and Submit
   const cotizarSeguro = e => {
@@ -105,8 +115,8 @@ const Formulario = ({setResumen, setCargando}) => {
     const porcentaje = 3 * diferenciaAnio;
     resultado = resultado - (resultado * porcentaje / 100);
 
-    //Calcular aumento segun marca
-    resultado = calcularMarca(marca) * resultado;
+    //Calcular aumento segun Continente de Origen
+    resultado = calcularAumentoPorContinenteDeOrigen(continenteDeOrigen) * resultado;
 
     //Calcular aumento segun plan
     resultado = calcularPlan(plan) * resultado
@@ -141,14 +151,25 @@ const Formulario = ({setResumen, setCargando}) => {
       { error ? <Error>Todos los campos son requeridos</Error> : null }
       </Campo>
 
+      {/* Continente de Origen */}
+      <Campo>
+        <Label htmlFor="continenteDeOrigen">Continente </Label>
+        <Select name="continenteDeOrigen" value={continenteDeOrigen} onChange={obtenerDatos}>
+          <option value=""  disabled hidden>Seleccione el continente de origen</option>
+          <option value="americano">Americano</option>
+          <option value="europeo">Europeo</option>
+          <option value="asiatico">Asiatico</option>
+        </Select>
+      </Campo>
+
       {/* Marca del Auto  */}
       <Campo>
         <Label htmlFor="marca">Marca</Label>
         <Select name="marca" value={marca} onChange={obtenerDatos}>
           <option value=""  disabled hidden>Seleccione una marca</option>
-          <option value="americano">Americano</option>
-          <option value="europeo">Europeo</option>
-          <option value="asiatico">Asiatico</option>
+          <option value="ford">Ford</option>
+          <option value="peugeot">Peugeot</option>
+          <option value="mitsubishi">Mitsubishi</option>
         </Select>
       </Campo>
 
