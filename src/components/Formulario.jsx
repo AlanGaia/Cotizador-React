@@ -1,9 +1,14 @@
-import React, {useState} from 'react'
-
-import styled from '@emotion/styled';
+import React, { useState } from "react";
+import styled from "@emotion/styled";
 //helpers y marcas
-import { obtenerDiferenciaAnio, calcularAumentoPorContinenteDeOrigen, calcularPlan, primerLetraMayuscula} from '../helper';
-import { Marcas } from '../Marcas';
+import { Marcas } from "../Marcas";
+import {
+  obtenerDiferenciaAnio,
+  calcularAumentoPorContinenteDeOrigen,
+  calcularPlan,
+  primerLetraMayuscula,
+} from "../helper";
+
 
 const Campo = styled.div`
   display: flex;
@@ -34,11 +39,11 @@ const InputRadio = styled.input`
 `;
 
 const Boton = styled.button`
-  background-color: #00838F;
+  background-color: #00838f;
   font-size: 16px;
   width: 100%;
   padding: 1rem;
-  color: #FFFFFF;
+  color: #ffffff;
   text-transform: uppercase;
   font-weight: bold;
   border: none;
@@ -49,7 +54,6 @@ const Boton = styled.button`
   &:hover {
     cursor: pointer;
     background-color: #0b79d3;
-
   }
 `;
 
@@ -63,123 +67,129 @@ const Error = styled.div`
   margin-bottom: 1rem;
 `;
 
-const Formulario = ({setResumen, setCargando}) => {
+const Formulario = ({ setResumen, setCargando }) => {
+
+  // Data initial state
+  const initialStateDatos = {
+    continenteDeOrigen: "",
+    marca: "",
+    anio: "",
+    plan: "",
+  };
 
   //Data
-  const [datos, setDatos] = useState({
-    continenteDeOrigen: '',
-    marca: '',
-    anio: '',
-    plan: ''
-  })
+  const [datos, setDatos] = useState(initialStateDatos);
 
   //Error
-  const [error, setError] = useState(false)
+  const [error, setError] = useState(false);
 
   //Destructuring obj datos
-  const {continenteDeOrigen, marca, anio, plan} = datos;
+  const { continenteDeOrigen, marca, anio, plan } = datos;
 
   //handle change
-  const obtenerDatos = e => {
-
-    if (e.target.name === 'continenteDeOrigen'){
-      //get contintente continente 
+  const obtenerDatos = (e) => {
+    //Si cambia el continente o se selecciona el continente
+    if (e.target.name === "continenteDeOrigen") {
+      //Reset form
+      setDatos({ initialStateDatos });
+      //get continente
       const continente = e.target.value;
       //Segun continente traer marcas asociadas
       const arrayMarcas = Marcas[continente];
-
       //Obtener el elemento Select Marca
-      const selectMarca = document.querySelector('#selectMarca');
+      const selectMarca = document.querySelector("#selectMarca");
+      //Clean select Marca vaciar opciones
+      selectMarca.innerHTML = "";
 
-      //Clean select
-      selectMarca.innerHTML = '';
-
-      
-      let disabledOption = document.createElement('option');
-      disabledOption.textContent = 'Seleccione una marca';
-      disabledOption.setAttribute('hidden','')
-
+      //Agregar opcion de Seleccione marca
+      let disabledOption = document.createElement("option");
+      disabledOption.textContent = "Seleccione una marca";
+      disabledOption.setAttribute("hidden", "");
       selectMarca.appendChild(disabledOption);
-      arrayMarcas.forEach(marca => {
-        //Crear el elemento Option
-        let newOption = document.createElement('option');
+
+      //Agregar las marcas como opciones
+      arrayMarcas.forEach((marca) => {
+        let newOption = document.createElement("option");
         newOption.value = marca;
         newOption.textContent = primerLetraMayuscula(marca);
-      //Insertar un option por cada marca en el input Marca
         selectMarca.appendChild(newOption);
-      })
+      });
+
+      // Reiniciar state y asignar el continente seleccionado
+      setDatos({
+        ...initialStateDatos,
+        [e.target.name]: e.target.value,
+      });
+    } else {
+      // Si el continente ya esta elegido
+      setDatos({
+        ...datos,
+        [e.target.name]: e.target.value,
+      });
     }
-
-
-
-    setDatos({
-      ...datos,
-      [e.target.name] : e.target.value
-    })
-  }
-
+  };
 
   //Handle error and Submit
-  const cotizarSeguro = e => {
+  const cotizarSeguro = (e) => {
     e.preventDefault();
 
-    if(marca.trim() === '' || anio.trim() === '' || plan.trim() === ''){
+    if (marca.trim() === "" || anio.trim() === "" || plan.trim() === "") {
       setError(true);
       return;
     }
-    setError(false)
+    setError(false);
 
     //Base de 2000
     let resultado = 2000;
 
     //obtener la dif de anio seleccionado contra el actual
     const diferenciaAnio = obtenerDiferenciaAnio(anio);
-  
+
     // por cada año de diferencia restar 3%
     const porcentaje = 3 * diferenciaAnio;
-    resultado = resultado - (resultado * porcentaje / 100);
+    resultado = resultado - (resultado * porcentaje) / 100;
 
     //Calcular aumento segun Continente de Origen
-    resultado = calcularAumentoPorContinenteDeOrigen(continenteDeOrigen) * resultado;
+    resultado =
+      calcularAumentoPorContinenteDeOrigen(continenteDeOrigen) * resultado;
 
     //Calcular aumento segun plan
-    resultado = calcularPlan(plan) * resultado
+    resultado = calcularPlan(plan) * resultado;
     resultado = parseFloat(resultado).toFixed(2);
 
     //simular consumo de api con spinner
     setCargando(true);
 
     setTimeout(() => {
-
       //Elimina el spinner despues de 1.5 segundos
       setCargando(false);
-
 
       //Guardar resultado
       setResumen({
         cotizacion: resultado,
         datos,
       });
-
     }, 1500);
+  };
 
-
-  }
-
-  
   return (
     <form onSubmit={cotizarSeguro}>
-
       {/* Error case */}
       <Campo>
-      { error ? <Error>Todos los campos son requeridos</Error> : null }
+        {error ? <Error>Todos los campos son requeridos</Error> : null}
       </Campo>
 
       {/* Continente de Origen */}
       <Campo>
         <Label htmlFor="continenteDeOrigen">Continente </Label>
-        <Select name="continenteDeOrigen" value={continenteDeOrigen} onChange={obtenerDatos}>
-          <option value=""  disabled hidden>Seleccione el continente de origen</option>
+        <Select
+          name="continenteDeOrigen"
+          value={continenteDeOrigen}
+          onChange={obtenerDatos}
+        >
+          <option value="" disabled hidden>
+            Seleccione el continente de origen
+          </option>
           <option value="americano">Americano</option>
           <option value="europeo">Europeo</option>
           <option value="asiatico">Asiatico</option>
@@ -189,8 +199,15 @@ const Formulario = ({setResumen, setCargando}) => {
       {/* Marca del Auto  */}
       <Campo>
         <Label htmlFor="marca">Marca</Label>
-        <Select name="marca" id="selectMarca" value={marca} onChange={obtenerDatos}>
-          <option value=""  disabled hidden>Seleccione un Continente</option>
+        <Select
+          name="marca"
+          id="selectMarca"
+          value={marca}
+          onChange={obtenerDatos}
+        >
+          <option value="" disabled hidden>
+            Seleccione un Continente
+          </option>
         </Select>
       </Campo>
 
@@ -198,7 +215,9 @@ const Formulario = ({setResumen, setCargando}) => {
       <Campo>
         <Label htmlFor="anio">Año</Label>
         <Select name="anio" value={anio} onChange={obtenerDatos}>
-          <option value=""  disabled hidden>Seleccione una año</option>
+          <option value="" disabled hidden>
+            Seleccione una año
+          </option>
           <option value="2020">2020</option>
           <option value="2019">2019</option>
           <option value="2018">2018</option>
@@ -216,48 +235,47 @@ const Formulario = ({setResumen, setCargando}) => {
         <Label htmlFor="plan">Plan:</Label>
       </Campo>
       <Borde>
-      <Campo>
-        <Label htmlFor="planBasico">Básico</Label>
+        <Campo>
+          <Label htmlFor="planBasico">Básico</Label>
           {/* Básico */}
-          <InputRadio 
-            type="radio" 
-            name="plan" 
-            value="basico" 
-            id="planBasico" 
-            checked={plan === 'basico'} 
+          <InputRadio
+            type="radio"
+            name="plan"
+            value="basico"
+            id="planBasico"
+            checked={plan === "basico"}
             onChange={obtenerDatos}
           />
-      </Campo>
-      <Campo>
-        <Label htmlFor="planIntermedio">Intermedio</Label>
+        </Campo>
+        <Campo>
+          <Label htmlFor="planIntermedio">Intermedio</Label>
           {/* Intermedio */}
-          <InputRadio 
-            type="radio" 
-            name="plan" 
-            value="intermedio" 
-            id="planIntermedio" 
-            checked={plan === 'intermedio'}
+          <InputRadio
+            type="radio"
+            name="plan"
+            value="intermedio"
+            id="planIntermedio"
+            checked={plan === "intermedio"}
             onChange={obtenerDatos}
           />
-      </Campo>
-      <Campo>
-        <Label htmlFor="planPremium">Premium</Label>
+        </Campo>
+        <Campo>
+          <Label htmlFor="planPremium">Premium</Label>
           {/* Premium */}
-          <InputRadio 
-            type="radio" 
-            name="plan" 
-            value="premium" 
-            id="planPremium" 
-            checked={plan === 'premium'}
+          <InputRadio
+            type="radio"
+            name="plan"
+            value="premium"
+            id="planPremium"
+            checked={plan === "premium"}
             onChange={obtenerDatos}
           />
-      </Campo>
+        </Campo>
       </Borde>
 
       <Boton type="submit">Cotizar</Boton>
-
     </form>
-  )
-}
+  );
+};
 
-export default Formulario
+export default Formulario;
