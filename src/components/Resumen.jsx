@@ -7,8 +7,10 @@ import { LogosOBJ } from '../Logos'
 const ContenedorResumen = styled.div`
   padding: 1rem;
   text-align: center;
-  background-color: #a3c0fd;
+  background-color: #f8f8f8;
   color: #000000;
+  border: solid 1px black;
+  border-radius: 8px;
   margin-top: 1rem;
 `;
 
@@ -30,11 +32,9 @@ function Resumen({datos}) {
   if (marca === '' || anio === '' || plan === '') return null;
 
 
-
   // elegir logo segun marca 
   const src = LogosOBJ[marca] ?? null;
 
-  
   
   return (
     <ContenedorResumen>

@@ -22,7 +22,7 @@ const Label = styled.label`
 const Borde = styled.div`
   border: solid 1px black;
   padding: 1rem;
-  background-color: aliceblue;
+  background-color: #f3f3f3;
 `;
 
 const Select = styled.select`
@@ -39,7 +39,7 @@ const InputRadio = styled.input`
 `;
 
 const Boton = styled.button`
-  background-color: #00838f;
+  background-color: #0b79d3;
   font-size: 16px;
   width: 100%;
   padding: 1rem;
@@ -53,7 +53,7 @@ const Boton = styled.button`
   //:hover
   &:hover {
     cursor: pointer;
-    background-color: #0b79d3;
+    background-color: #0ba4d3;
   }
 `;
 

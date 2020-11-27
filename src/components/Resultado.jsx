@@ -3,9 +3,9 @@ import styled from '@emotion/styled';
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 const Mensaje = styled.p`
-  background-color: rgb(127, 224, 237);
+  background-color: rgb(221, 243, 247);
   margin-top: 2rem;
-  padding: 1rem;
+  padding: 2rem;
   text-align: center;
   font-weight: bold;
 `;
@@ -32,7 +32,7 @@ function Resultado({ cotizacion }) {
 
   return (
     (cotizacion === 0) ? 
-      <Mensaje>Elige marca, año y plan</Mensaje> 
+      <Mensaje>Elige Continente, Marca, Año y Plan del auto</Mensaje> 
       :
         (
           <ContenedorTotal>
