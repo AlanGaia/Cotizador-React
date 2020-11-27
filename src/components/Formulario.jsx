@@ -87,9 +87,26 @@ const Formulario = ({setResumen, setCargando}) => {
       const continente = e.target.value;
       //Segun continente traer marcas asociadas
       const arrayMarcas = Marcas[continente];
-      //Insertar un option por cada marca en el input Marca
+
+      //Obtener el elemento Select Marca
+      const selectMarca = document.querySelector('#selectMarca');
+
+      //Clean select
+      selectMarca.innerHTML = '';
+
+      
+      let disabledOption = document.createElement('option');
+      disabledOption.textContent = 'Seleccione una marca';
+      disabledOption.setAttribute('hidden','')
+
+      selectMarca.appendChild(disabledOption);
       arrayMarcas.forEach(marca => {
-        console.log(`<option value="${marca}">${primerLetraMayuscula(marca)}</option>`);
+        //Crear el elemento Option
+        let newOption = document.createElement('option');
+        newOption.value = marca;
+        newOption.textContent = primerLetraMayuscula(marca);
+      //Insertar un option por cada marca en el input Marca
+        selectMarca.appendChild(newOption);
       })
     }
 
@@ -172,11 +189,8 @@ const Formulario = ({setResumen, setCargando}) => {
       {/* Marca del Auto  */}
       <Campo>
         <Label htmlFor="marca">Marca</Label>
-        <Select name="marca" value={marca} onChange={obtenerDatos}>
-          <option value=""  disabled hidden>Seleccione una marca</option>
-          <option value="ford">Ford</option>
-          <option value="peugeot">Peugeot</option>
-          <option value="mitsubishi">Mitsubishi</option>
+        <Select name="marca" id="selectMarca" value={marca} onChange={obtenerDatos}>
+          <option value=""  disabled hidden>Seleccione un Continente</option>
         </Select>
       </Campo>
 
