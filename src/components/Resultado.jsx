@@ -32,7 +32,7 @@ function Resultado({ cotizacion }) {
 
   return (
     (cotizacion === 0) ? 
-      <Mensaje>Elige Continente, Marca, Año y Plan del auto</Mensaje> 
+      <Mensaje>Elige Continente, Marca, Año y seguro del auto</Mensaje> 
       :
         (
           <ContenedorTotal>

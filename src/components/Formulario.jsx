@@ -21,24 +21,41 @@ const CardContainer = styled.div`
   flex-wrap: wrap;
 `;
 
-const InputRadio = styled.input`
-  margin: 0 1rem;
+const Card = styled.div`
+  background-color: rgba(102, 41, 214, 0.404);
+  margin: 1rem;
+  color: #FFFFFF;
+  font-weight: bold;
+  font-size: 1rem;
+  display:flex;
+  padding: 2rem;
+  width: 100%;
+  justify-content: center;
+
+  & label{
+    background-color: rgba(102, 41, 214, 0.555);
+    border: 2px solid white;
+    padding: 1rem;
+    cursor: pointer;
+    transition: 300ms;
+  }
+
+  & label:hover{
+    background-color: rgb(102, 41, 214);
+  }
 `;
 
-const Card = styled.div`
-background-color: rgba(102, 41, 214, 0.555);
-margin: 1rem;
-color: #FFFFFF;
-font-weight: bold;
-font-size: 1rem;
-display:flex;
-padding: 2rem;
-width: 100%;
+const InputRadio = styled.input`
+  margin: 0 1rem;
+  opacity: 0;
+  position: fixed;
+  width: 0; 
 
-
-${InputRadio}:hover  & {
-  background-color:red;
-}
+  :checked + label  {
+    background-color: rgb(78, 22, 184);
+    font-size: 1.5rem;
+    padding: 1.4rem;
+  }
 `;
 
 const Label = styled.label`
@@ -58,7 +75,6 @@ const Select = styled.select`
   cursor: pointer;
   -webkit-appearance: none;
 `;
-
 
 
 const Boton = styled.button`
@@ -229,7 +245,7 @@ const Formulario = ({ setResumen, setCargando }) => {
           onChange={obtenerDatos}
         >
           <option value="" disabled hidden>
-            Seleccione un Continente
+            Debe elegir un continente primero
           </option>
         </Select>
       </Campo>
@@ -239,7 +255,7 @@ const Formulario = ({ setResumen, setCargando }) => {
         <Label htmlFor="anio">Año</Label>
         <Select name="anio" value={anio} onChange={obtenerDatos}>
           <option value="" disabled hidden>
-            Seleccione una año
+            Seleccione un año
           </option>
           <option value="2020">2020</option>
           <option value="2019">2019</option>
@@ -255,13 +271,12 @@ const Formulario = ({ setResumen, setCargando }) => {
 
       {/* Plan del Auto */}
       <Campo>
-        <Label htmlFor="plan">Plan:</Label>
+        <Label htmlFor="plan">Seguro:</Label>
       </Campo>
       <Borde>
         <Campo>
           <CardContainer>
           <Card>
-          <label htmlFor="planBasico">Terceros</label>
           {/* Básico */}
           <InputRadio
             type="radio"
@@ -271,9 +286,9 @@ const Formulario = ({ setResumen, setCargando }) => {
             checked={plan === "basico"}
             onChange={obtenerDatos}
           />
+          <label htmlFor="planBasico">Terceros</label>
           </Card>
         <Card>
-          <label htmlFor="planIntermedio">Terceros con Granizo</label>
           {/* Intermedio */}
           <InputRadio
             type="radio"
@@ -283,11 +298,9 @@ const Formulario = ({ setResumen, setCargando }) => {
             checked={plan === "intermedio"}
             onChange={obtenerDatos}
           />
+          <label htmlFor="planIntermedio">Terceros con Granizo</label>
           </Card>
-          </CardContainer>
-        </Campo>
-        <Campo>
-          <Label htmlFor="planPremium">Todo Riesgo</Label>
+          <Card>
           {/* Premium */}
           <InputRadio
             type="radio"
@@ -297,6 +310,10 @@ const Formulario = ({ setResumen, setCargando }) => {
             checked={plan === "premium"}
             onChange={obtenerDatos}
           />
+          <label htmlFor="planPremium">Todo Riesgo</label>
+          
+          </Card>
+          </CardContainer>
         </Campo>
       </Borde>
 
