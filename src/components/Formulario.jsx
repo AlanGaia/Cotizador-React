@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "@emotion/styled";
+import styled from "@emotion/styled/macro";
 //helpers y marcas
 import { Marcas } from "../Marcas";
 import {
@@ -14,6 +14,31 @@ const Campo = styled.div`
   display: flex;
   margin-bottom: 1rem;
   align-items: center;
+`;
+
+const CardContainer = styled.div`
+  display:flex;
+  flex-wrap: wrap;
+`;
+
+const InputRadio = styled.input`
+  margin: 0 1rem;
+`;
+
+const Card = styled.div`
+background-color: rgba(102, 41, 214, 0.555);
+margin: 1rem;
+color: #FFFFFF;
+font-weight: bold;
+font-size: 1rem;
+display:flex;
+padding: 2rem;
+width: 100%;
+
+
+${InputRadio}:hover  & {
+  background-color:red;
+}
 `;
 
 const Label = styled.label`
@@ -34,9 +59,7 @@ const Select = styled.select`
   -webkit-appearance: none;
 `;
 
-const InputRadio = styled.input`
-  margin: 0 1rem;
-`;
+
 
 const Boton = styled.button`
   background-color: #0b79d3;
@@ -236,7 +259,9 @@ const Formulario = ({ setResumen, setCargando }) => {
       </Campo>
       <Borde>
         <Campo>
-          <Label htmlFor="planBasico">Básico</Label>
+          <CardContainer>
+          <Card>
+          <label htmlFor="planBasico">Terceros</label>
           {/* Básico */}
           <InputRadio
             type="radio"
@@ -246,9 +271,9 @@ const Formulario = ({ setResumen, setCargando }) => {
             checked={plan === "basico"}
             onChange={obtenerDatos}
           />
-        </Campo>
-        <Campo>
-          <Label htmlFor="planIntermedio">Intermedio</Label>
+          </Card>
+        <Card>
+          <label htmlFor="planIntermedio">Terceros con Granizo</label>
           {/* Intermedio */}
           <InputRadio
             type="radio"
@@ -258,9 +283,11 @@ const Formulario = ({ setResumen, setCargando }) => {
             checked={plan === "intermedio"}
             onChange={obtenerDatos}
           />
+          </Card>
+          </CardContainer>
         </Campo>
         <Campo>
-          <Label htmlFor="planPremium">Premium</Label>
+          <Label htmlFor="planPremium">Todo Riesgo</Label>
           {/* Premium */}
           <InputRadio
             type="radio"
